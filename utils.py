@@ -1,13 +1,11 @@
 import random
 from random_words import hangman_words
 
-def ask_mode(input: str) -> str: 
-    # TODO: Change all 'input' variables to other name to prevent overwriting build-in
-    # input function
+def ask_mode(user_input: str) -> str:
     """Return a variable to determine manual or random word choice. 
     
     Args: 
-        input: The input by the user.
+        user_input: The input by the user.
     
     Returns: 
         Either "manual" or "random" strings.
@@ -16,11 +14,11 @@ def ask_mode(input: str) -> str:
         ValueError: If the input is not one of the expected values.
     """
     appropriate_values = ["manual", "m", "random", "automatic", "auto", "input", "r", "a", "i"]
-    if input.strip().lower() not in appropriate_values:
-        raise ValueError(f"Invalid input: '{input}'. Expected one of appropriate values: {appropriate_values}")
+    if user_input.strip().lower() not in appropriate_values:
+        raise ValueError(f"Invalid input: '{user_input}'. Expected one of appropriate values: {appropriate_values}")
     if input.strip().lower() in ["manual", "m"]:
         mode = "manual"
-    if input.strip().lower() in ["random", "automatic", "auto", "input", "r", "a", "i"]:
+    if user_input.strip().lower() in ["random", "automatic", "auto", "input", "r", "a", "i"]:
         mode = "random"
     return mode
 
@@ -75,4 +73,3 @@ def ask_for_letter(word: str, letter: str, counter: int, already_guessed: list):
             return check_letter(word, letter), message
     except ValueError:
         print("Enter a single letter. No numbers or special characters are allowed.")
-
