@@ -1,7 +1,7 @@
 import random
 from random_words import hangman_words
 
-def ask_mode(input: str):
+def ask_mode(input: str) -> str:
     """Return a variable to determine manual or random word choice.
     
     Args: 
@@ -22,7 +22,7 @@ def ask_mode(input: str):
         mode = "random"
     return mode
 
-def check_letter(word: str, letter: str):
+def check_letter(word: str, letter: str) -> int:
     if isinstance(letter, str) and len(letter) == 1:
         location = word.find(letter)
         return location # If letter is not in the word, will result in index of -1
@@ -31,5 +31,5 @@ def check_letter(word: str, letter: str):
     else: 
         raise ValueError(f"Invalid input: {letter}. Expected single letter.")
 
-def choose_random_word():
+def choose_random_word() -> str:
     return random.choice(hangman_words)
