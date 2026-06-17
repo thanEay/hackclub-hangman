@@ -22,9 +22,10 @@ def ask_mode(input: str):
     return mode
 
 def check_letter(word: str, letter: str):
-    if letter in word:
+    if isinstance(letter, str) and len(letter) == 1:
         location = word.find(letter)
-        if isinstance(location, int):
-            return location # If letter is not in the word, will result in index of -1
-        else: 
-            return "Please input a letter"
+        return location # If letter is not in the word, will result in index of -1
+    elif isinstance(letter, str):
+        raise ValueError(f"Invalid input: {letter}. Expected string with length of 1.")
+    else: 
+        raise ValueError(f"Invalid input: {letter}. Expected single letter.")
