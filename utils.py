@@ -1,6 +1,17 @@
 import random
 
 def ask_mode(input: str):
+    """Return a variable to determine manual or random word choice.
+    
+    Args: 
+        input: The input by the user
+    
+    Returns: 
+        Either "manual" or "random" strings.
+    
+    Raises: 
+        ValueError: If the input is not one of the expected values
+    """
     if input.strip().lower() in ["manual", "m"]:
         mode = "manual"
     if input.strip().lower() in ["random", "automatic", "auto", "input", "r", "a", "i"]:
