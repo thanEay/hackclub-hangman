@@ -23,13 +23,25 @@ def ask_mode(input: str) -> str:
     return mode
 
 def check_letter(word: str, letter: str) -> int:
+    """
+    Returns the location of a letter in a word.
+    
+    Args:
+        word: Word to search
+        letter: Letter to search the word for
+    
+    Returns: 
+        The resulting index of the letter in the word. If the letter is not found in
+        the word, it returns -1.
+
+    Raises:
+        ValueError: The input is not a letter with a length of 1
+    """
     if isinstance(letter, str) and len(letter) == 1:
         location = word.find(letter)
         return location # If letter is not in the word, will result in index of -1
-    elif isinstance(letter, str):
-        raise ValueError(f"Invalid input: {letter}. Expected string with length of 1.")
     else: 
-        raise ValueError(f"Invalid input: {letter}. Expected single letter.")
+        raise ValueError(f"Invalid input: {letter}. Expected string with length of 1.")
 
 def choose_random_word() -> str:
     return random.choice(hangman_words)
