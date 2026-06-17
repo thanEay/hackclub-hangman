@@ -40,8 +40,7 @@ def check_letter(word: str, letter: str) -> int:
     if isinstance(letter, str) and len(letter) == 1:
         location = word.find(letter)
         return location # If letter is not in the word, will result in index of -1
-    else:
-        raise ValueError(f"Invalid input: {letter}. Expected string with length of 1.")
+    raise ValueError(f"Invalid input: {letter}. Expected string with length of 1.")
 
 def choose_random_word() -> str:
     """Returns a random word (all lower) from random_words.py file."""
@@ -68,8 +67,7 @@ def ask_for_letter(word: str, letter: str, counter: int, already_guessed: list):
             already_guessed.append(letter)
             message = f"{letter} is in the word at index {check_letter(word, letter)}."
             return check_letter(word, letter), message
-        else:
-            message = f"'{letter}' is NOT in the word."
-            return check_letter(word, letter), message
+        message = f"'{letter}' is NOT in the word."
+        return check_letter(word, letter), message
     except ValueError:
         print("Enter a single letter. No numbers or special characters are allowed.")
