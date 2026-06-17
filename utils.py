@@ -1,6 +1,10 @@
 import random
 from random_words import hangman_words
 
+# Utility functions for the hangman game.
+# These helpers support choosing the game mode, checking letters, and selecting words.
+# In other words, this code does most of the heavy lifting for the hangman game.
+
 def ask_mode(user_input: str) -> str:
     """Return a variable to determine manual or random word choice. 
     
@@ -13,9 +17,12 @@ def ask_mode(user_input: str) -> str:
     Raises: 
         ValueError: If the input is not one of the expected values.
     """
+    # Acceptable user responses for manual vs random word selection.
     appropriate_values = ["manual", "m", "random", "automatic", "auto", "input", "r", "a", "i"]
     if user_input.strip().lower() not in appropriate_values:
         raise ValueError(f"Invalid input: '{user_input}'. Expected one of appropriate values: {appropriate_values}")
+
+    # Map user input to a mode.
     if input.strip().lower() in ["manual", "m"]:
         mode = "manual"
     if user_input.strip().lower() in ["random", "automatic", "auto", "input", "r", "a", "i"]:
@@ -42,10 +49,12 @@ def check_letter(word: str, letter: str) -> int:
         return location # If letter is not in the word, will result in index of -1
     raise ValueError(f"Invalid input: {letter}. Expected string with length of 1.")
 
+# Choose a secret word for the game from the predefined word list.
 def choose_random_word() -> str:
     """Returns a random word (all lower) from random_words.py file."""
     return random.choice(hangman_words)
 
+# Check a guessed letter and prepare the response message for the game.
 def ask_for_letter(word: str, letter: str, counter: int, already_guessed: list):
     """Letter checking and incorrect answer counter logic. 
     
@@ -57,17 +66,21 @@ def ask_for_letter(word: str, letter: str, counter: int, already_guessed: list):
         player from increasing the counter on a letter that was already guessed. 
     
     Returns:
-        TODO
+        Tuple[int, str]: The position of the letter and a user-facing message.
     
     Raises: 
-        TODO
+        ValueError: If the input is not a single character.
     """
     try:
+        # If the guessed letter exists in the word, append it to guessed letters.
         if check_letter(word, letter) != -1:
             already_guessed.append(letter)
             message = f"{letter} is in the word at index {check_letter(word, letter)}."
             return check_letter(word, letter), message
+
+        # Handle the case where the guessed letter is not present.
         message = f"'{letter}' is NOT in the word."
         return check_letter(word, letter), message
     except ValueError:
+        # Inform the user about invalid input, such as digits or multiple characters.
         print("Enter a single letter. No numbers or special characters are allowed.")
