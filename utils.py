@@ -44,4 +44,5 @@ def check_letter(word: str, letter: str) -> int:
         raise ValueError(f"Invalid input: {letter}. Expected string with length of 1.")
 
 def choose_random_word() -> str:
+    """Returns a random word (all lower) from random_words.py file."""
     return random.choice(hangman_words)
