@@ -1,4 +1,5 @@
 import random
+from random_words import hangman_words
 
 def ask_mode(input: str):
     """Return a variable to determine manual or random word choice.
@@ -29,3 +30,6 @@ def check_letter(word: str, letter: str):
         raise ValueError(f"Invalid input: {letter}. Expected string with length of 1.")
     else: 
         raise ValueError(f"Invalid input: {letter}. Expected single letter.")
+
+def choose_random_word():
+    return random.choice(hangman_words)
