@@ -8,3 +8,9 @@ elif ask_mode(mode_input) == "random":
     mode = "random"
 else: 
     print("Please enter an appropriate mode: 'manual' or 'random'.")
+    exit()
+
+if mode == "manual":
+    secret_word = input("Enter a secret word: ")
+if mode == "random":
+    secret_word = choose_random_word()
