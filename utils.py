@@ -30,7 +30,7 @@ def ask_mode(user_input: str) -> str:
         mode = "random"
     return mode
 
-def check_letter(word: str, letter: str) -> int:
+def check_letter(word: str, letter: str) -> list:
     """
     Returns the location of a letter in a word.
     
@@ -39,15 +39,23 @@ def check_letter(word: str, letter: str) -> int:
         letter: Letter to search the word for.
     
     Returns: 
-        The resulting index of the letter in the word. If the letter is not found in
-        the word, it returns -1.
+        A list of the resulting index (or indexes) of the letter in the word. If the
+        letter is not found in the word, it returns -1.
 
     Raises:
         ValueError: The input is not a letter with a length of 1.
     """
     if isinstance(letter, str) and len(letter) == 1:
-        location = word.find(letter)
-        return location # If letter is not in the word, will result in index of -1
+        locations = []
+        if word.count(letter) == 1:
+            locations = [word.find(letter)]
+        if word.count(letter) > 1:
+            for index, character in enumerate(word):
+                if character == letter:
+                    locations.append(index)  
+        else:
+            locations = [-1]      
+        return locations # If letter is not in the word, will result in index of -1
     raise ValueError(f"Invalid input: {letter}. Expected string with length of 1.")
 
 # Choose a secret word for the game from the predefined word list.
