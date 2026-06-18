@@ -87,6 +87,7 @@ def ask_for_letter(word: str, letter: str, counter: int, already_guessed: list,
         # Handle the case where the guessed letter is not present, when 
         # index == -1.
         message = f"'{letter}' is NOT in the word."
+        already_guessed.append(letter)
         return index, message
     except ValueError:
         # Inform the user about invalid input, such as digits or multiple characters.
