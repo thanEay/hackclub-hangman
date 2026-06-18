@@ -20,10 +20,13 @@ if mode == "random":
     secret_word = choose_random_word()
 
 while counter < 10:
-    user_input = input("Enter another letter.")
+    user_input = input("Enter another letter: ")
     if user_input.strip().lower() in already_guessed:
         print("You already guessed that letter.")
         continue # Goes to next loop
-    index, message = ask_for_letter(secret_word, f"{user_input}", counter, 
-                                    already_guessed, uncovered_indicies) # type: ignore
-    print(message)  
+    try: 
+        index, message = ask_for_letter(secret_word, f"{user_input}", counter, 
+                                        already_guessed, uncovered_indicies) # type: ignore
+        print(message)
+    except ValueError:
+        print("Enter a single letter. No numbers or special characters are allowed.")

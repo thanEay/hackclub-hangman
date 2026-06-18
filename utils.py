@@ -91,4 +91,5 @@ def ask_for_letter(word: str, letter: str, counter: int, already_guessed: list,
     except ValueError:
         # Inform the user about invalid input, such as digits or multiple characters.
         print("Enter a single letter. No numbers or special characters are allowed.")
+        raise ValueError(f"Invalid input: {letter}. Expected string with length of 1.")
     
