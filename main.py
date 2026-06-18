@@ -28,6 +28,9 @@ printed_word = []
 for character in secret_word:
     printed_word.append("_")
 
+print(f"The word has {len(secret_word)} characters.")
+print("".join(printed_word))
+
 while counter < 10:
     user_input = input("Enter another letter: ")
     if user_input.strip().lower() in already_guessed:
@@ -42,3 +45,5 @@ while counter < 10:
         print("".join(printed_word))
     except ValueError:
         print("Enter a single letter. No numbers or special characters are allowed.")
+    if '_' not in printed_word:
+        print(f"You guessed the word: {secret_word}. Congradulations!")
