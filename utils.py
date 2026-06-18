@@ -55,7 +55,8 @@ def choose_random_word() -> str:
     return random.choice(hangman_words)
 
 # Check a guessed letter and prepare the response message for the game.
-def ask_for_letter(word: str, letter: str, counter: int, already_guessed: list):
+def ask_for_letter(word: str, letter: str, counter: int, already_guessed: list,
+                   uncovered_indicies: list):
     """Letter checking and incorrect answer counter logic. 
     
     Args:
@@ -64,6 +65,8 @@ def ask_for_letter(word: str, letter: str, counter: int, already_guessed: list):
         counter: The number of incorrect answers this game, results in hangman sprite change.
         already_guessed: A list of characters that were already guessed. Prevents the
         player from increasing the counter on a letter that was already guessed. 
+        uncovered_indicies: A list of indicies that map to correctly guessed (and
+        therefore uncovered) letters in the secret word.
     
     Returns:
         Tuple[int, str]: The position of the letter and a user-facing message.
@@ -76,11 +79,14 @@ def ask_for_letter(word: str, letter: str, counter: int, already_guessed: list):
         if check_letter(word, letter) != -1:
             already_guessed.append(letter)
             message = f"{letter} is in the word at index {check_letter(word, letter)}."
+            uncovered_indicies.append(check_letter(word, letter))
             return check_letter(word, letter), message
 
-        # Handle the case where the guessed letter is not present.
+        # Handle the case where the guessed letter is not present, when 
+        # check_letter(word, letter) == -1.
         message = f"'{letter}' is NOT in the word."
         return check_letter(word, letter), message
     except ValueError:
         # Inform the user about invalid input, such as digits or multiple characters.
         print("Enter a single letter. No numbers or special characters are allowed.")
+    
