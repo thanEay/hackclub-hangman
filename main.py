@@ -19,7 +19,7 @@ already_guessed = []
 uncovered_indicies = []
 
 if mode == "manual":
-    secret_word = input("Enter a secret word: ")
+    secret_word = input("Enter a secret word: ").strip().lower()
 if mode == "random":
     secret_word = choose_random_word()
 

@@ -24,7 +24,7 @@ def ask_mode(user_input: str) -> str:
         raise ValueError(f"Invalid input: '{user_input}'. Expected one of appropriate values: {appropriate_values}")
 
     # Map user input to a mode.
-    if input in ["manual", "m"]:
+    if user_input in ["manual", "m"]:
         mode = "manual"
     if user_input in ["random", "automatic", "auto", "input", "r", "a", "i"]:
         mode = "random"
