@@ -1,4 +1,3 @@
-from random import choice, randint
 from utils import *
 
 mode_input = input("Would you like to set your own word or randomly generate one?\n")
@@ -46,5 +45,5 @@ while counter < 10:
     except ValueError:
         print("Enter a single letter. No numbers or special characters are allowed.")
     if '_' not in printed_word:
-        print(f"You guessed the word: {secret_word}. Congradulations!")
+        print(f"You guessed the word: {secret_word}. Congratulations!")
         exit()
