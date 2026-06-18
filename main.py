@@ -45,5 +45,5 @@ while counter < 10:
     except ValueError:
         print("Enter a single letter. No numbers or special characters are allowed.")
     if '_' not in printed_word:
-        print(f"You guessed the word: {secret_word}. Congratulations!")
+        print(f"You guessed the word: {secret_word}. Congratulations! 🎉")
         exit()

@@ -4,3 +4,4 @@ hangman_words = [
     "python", "hangman", "laptop", "planet", "guitar",
     "xylophone", "cryptic", "mystery", "jigsaw", "buzzard",
 ]
+    
