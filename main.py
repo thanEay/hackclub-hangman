@@ -24,6 +24,10 @@ if mode == "manual":
 if mode == "random":
     secret_word = choose_random_word()
 
+printed_word = []
+for character in secret_word:
+    printed_word.append("_")
+
 while counter < 10:
     user_input = input("Enter another letter: ")
     if user_input.strip().lower() in already_guessed:
@@ -33,5 +37,8 @@ while counter < 10:
         index, message = ask_for_letter(secret_word, f"{user_input}", counter, 
                                         already_guessed, uncovered_indicies) # type: ignore
         print(message)
+        if index != -1:
+            printed_word[index] = user_input
+        print("".join(printed_word))
     except ValueError:
         print("Enter a single letter. No numbers or special characters are allowed.")
