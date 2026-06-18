@@ -47,3 +47,4 @@ while counter < 10:
         print("Enter a single letter. No numbers or special characters are allowed.")
     if '_' not in printed_word:
         print(f"You guessed the word: {secret_word}. Congradulations!")
+        exit()
