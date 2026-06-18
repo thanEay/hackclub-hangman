@@ -17,15 +17,16 @@ def ask_mode(user_input: str) -> str:
     Raises: 
         ValueError: If the input is not one of the expected values.
     """
+    user_input = user_input.strip().lower()
     # Acceptable user responses for manual vs random word selection.
     appropriate_values = ["manual", "m", "random", "automatic", "auto", "input", "r", "a", "i"]
-    if user_input.strip().lower() not in appropriate_values:
+    if user_input not in appropriate_values:
         raise ValueError(f"Invalid input: '{user_input}'. Expected one of appropriate values: {appropriate_values}")
 
     # Map user input to a mode.
-    if input.strip().lower() in ["manual", "m"]:
+    if input in ["manual", "m"]:
         mode = "manual"
-    if user_input.strip().lower() in ["random", "automatic", "auto", "input", "r", "a", "i"]:
+    if user_input in ["random", "automatic", "auto", "input", "r", "a", "i"]:
         mode = "random"
     return mode
 
@@ -74,18 +75,19 @@ def ask_for_letter(word: str, letter: str, counter: int, already_guessed: list,
     Raises: 
         ValueError: If the input is not a single character.
     """
+    index = check_letter(word, letter)
     try:
         # If the guessed letter exists in the word, append it to guessed letters.
-        if check_letter(word, letter) != -1:
+        if index != -1:
             already_guessed.append(letter)
-            message = f"{letter} is in the word at index {check_letter(word, letter)}."
-            uncovered_indicies.append(check_letter(word, letter))
-            return check_letter(word, letter), message
+            message = f"{letter} is in the word at index {index}."
+            uncovered_indicies.append(index)
+            return index, message
 
         # Handle the case where the guessed letter is not present, when 
-        # check_letter(word, letter) == -1.
+        # index == -1.
         message = f"'{letter}' is NOT in the word."
-        return check_letter(word, letter), message
+        return index, message
     except ValueError:
         # Inform the user about invalid input, such as digits or multiple characters.
         print("Enter a single letter. No numbers or special characters are allowed.")
