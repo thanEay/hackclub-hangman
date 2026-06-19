@@ -38,6 +38,9 @@ for character in secret_word:
 print(f"The word has {len(secret_word)} characters.")
 print("".join(printed_word))
 
+# For debug, prints secret word
+print(f"DEBUG: {secret_word}")
+
 # Main game loop - continue until player wins or reaches 10 wrong guesses
 while counter < 10:
     user_input = input("Enter another letter: ")
@@ -49,7 +52,8 @@ while counter < 10:
                                         already_guessed, uncovered_indicies) # type: ignore
         print(message)
         if -1 not in indexes:
-            printed_word[indexes] = user_input
+            for index in indexes:
+                printed_word[index] = user_input
         print("".join(printed_word))
     except ValueError:
         print("Enter a single letter. No numbers or special characters are allowed.")
