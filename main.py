@@ -1,4 +1,5 @@
 from utils import *
+import os
 
 # Import necessary utilities
 from utils import *
@@ -53,6 +54,7 @@ while counter < 8:
     try: 
         indexes, message, counter = ask_for_letter(secret_word, f"{user_input}", counter, 
                                         already_guessed, uncovered_indicies) # type: ignore
+        os.system('cls' if os.name == 'nt' else 'clear')
         print(message)
         if -1 not in indexes:
             for index in indexes:
