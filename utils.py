@@ -91,13 +91,14 @@ def ask_for_letter(word: str, letter: str, counter: int, already_guessed: list,
             if len(indexes) == 1:
                 message = f"{letter} is in the word at index {str(indexes)}."
             else:
-                message = f"'{letter}' is in the word at indexes {", ".join(map(str, indexes))}"
+                message = f"'{letter}' is in the word at indexes {", ".join(map(str, indexes))}"\
+                f"You have already guessed {already_guessed}."
             uncovered_indicies.append(indexes)
             return indexes, message, counter
 
         # Handle the case where the guessed letter is not present, when -1 is in 
         # indexes.
-        message = f"'{letter}' is NOT in the word."
+        message = f"'{letter}' is NOT in the word. You have already guessed {already_guessed}."
         already_guessed.append(letter)
         counter += 1
         return indexes, message, counter
