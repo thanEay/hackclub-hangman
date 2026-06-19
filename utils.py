@@ -49,7 +49,7 @@ def check_letter(word: str, letter: str) -> list:
         locations = []
         if word.count(letter) == 1:
             locations = [word.find(letter)]
-        if word.count(letter) > 1:
+        elif word.count(letter) > 1: # BUG found here! elif was an if statement
             for index, character in enumerate(word):
                 if character == letter:
                     locations.append(index)  
