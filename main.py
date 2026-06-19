@@ -23,6 +23,7 @@ except ValueError:
 counter = 0
 already_guessed = []
 uncovered_indicies = []
+is_first_loop = True
 
 # Get the secret word based on chosen mode
 if mode == "manual":
@@ -47,7 +48,10 @@ print(f"DEBUG: {secret_word}")
 
 # Main game loop - continue until player wins or reaches 10 wrong guesses
 while counter < 8:
-    user_input = input("Enter another letter: ")
+    if is_first_loop:
+        user_input = input("Enter a letter to guess: ")
+    else:
+        user_input = input("Enter another letter: ")
     if user_input.strip().lower() in already_guessed:
         print("You already guessed that letter.")
         continue # Goes to next loop
