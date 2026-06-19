@@ -93,13 +93,14 @@ def ask_for_letter(word: str, letter: str, counter: int, already_guessed: list,
             else:
                 message = f"'{letter}' is in the word at indexes {", ".join(map(str, indexes))}"
             uncovered_indicies.append(indexes)
-            return indexes, message
+            return indexes, message, counter
 
         # Handle the case where the guessed letter is not present, when -1 is in 
         # indexes.
         message = f"'{letter}' is NOT in the word."
         already_guessed.append(letter)
-        return indexes, message
+        counter += 1
+        return indexes, message, counter
     except ValueError:
         # Inform the user about invalid input, such as digits or multiple characters.
         print("Enter a single letter. No numbers or special characters are allowed.")
