@@ -1,4 +1,5 @@
 from utils import *
+from ascii_sprites import sprites
 import os
 
 # Import necessary utilities
@@ -30,6 +31,7 @@ if mode == "manual":
     secret_word = input("Enter a secret word: ").strip().lower()
 if mode == "random":
     secret_word = choose_random_word()
+os.system('cls' if os.name == 'nt' else 'clear')
 
 # Create display with underscores for each letter
 printed_word = []
@@ -65,6 +67,7 @@ while counter < 8:
                 printed_word[index] = user_input
         print("".join(printed_word))
         print(f"Incorrect answers left: {8 - counter}")
+        print(sprites[counter])
     except ValueError:
         print("Enter a single letter. No numbers or special characters are allowed.")
 # Check if player has found all letters
