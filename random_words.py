@@ -3,5 +3,6 @@ hangman_words = [
     "book", "lamp", "desk", "frog", "kite", "bird",
     "python", "hangman", "laptop", "planet", "guitar",
     "xylophone", "cryptic", "mystery", "jigsaw", "buzzard",
+    "hack club", "outpost", "stardance", "foobar"
 ]
     
