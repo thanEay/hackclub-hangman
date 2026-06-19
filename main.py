@@ -32,7 +32,10 @@ if mode == "random":
 # Create display with underscores for each letter
 printed_word = []
 for character in secret_word:
-    printed_word.append("_")
+    if character != " ":
+        printed_word.append("_")
+        continue
+    printed_word.append(" ")
 
 # Display initial game state
 print(f"The word has {len(secret_word)} characters.")
