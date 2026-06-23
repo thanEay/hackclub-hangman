@@ -125,12 +125,14 @@ def guess_word(secret_word, guessed_word, counter):
     Raises: 
         TODO
     """
+    # try: 
     if secret_word == guessed_word:
-        message = f"'{guessed_word}' \033[3mis\033[0m the word!" # 'is' is in italics
+        message = f"'{guessed_word}' IS the word!"
         return True, message, counter
     else:
         counter += 1
-        message = f"'{guessed_word}' is not the word."
-
+        message = f"'{guessed_word}' is NOT the word."
         return False, message, counter
-    
+    # except ValueError:
+    #     # raise ValueError(TODO)
+    #     pass

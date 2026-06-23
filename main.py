@@ -2,9 +2,6 @@ from utils import *
 from ascii_sprites import sprites
 import os
 
-# Import necessary utilities
-from utils import *
-
 mode_input = input("Would you like to set your own word or randomly generate one?\n")
 # Get game mode from user (manual or random word)
 try:
@@ -76,13 +73,16 @@ while counter < 8:
     # If the first character of the user input is '!', guess the entire word
     else: 
         try:
-            correct_word_bool, message, counter = guess_word(secret_word, 
-                                                             user_input[1:],
+            correct_word_bool, message, counter = guess_word(secret_word, user_input[1:],
                                                              counter)
             if correct_word_bool:
+                os.system('cls' if os.name == 'nt' else 'clear')
                 print(message)
+                continue
             else:
-                pass
+                os.system('cls' if os.name == 'nt' else 'clear')
+                print(message)
+                continue
         except ValueError:
             pass
 
