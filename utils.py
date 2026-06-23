@@ -78,7 +78,7 @@ def ask_for_letter(word: str, letter: str, counter: int, already_guessed: list,
         therefore uncovered) letters in the secret word.
     
     Returns:
-        Tuple[int, str]: The position of the letter and a user-facing message.
+        Tuple[int, str]: The position of the letter and a user-facing message. TODO: add second int to this line
     
     Raises: 
         ValueError: If the input is not a single character.
@@ -117,14 +117,20 @@ def guess_word(secret_word, guessed_word, counter):
         guessed_word: The guess by the player.
 
     Returns: 
-        TODO
+        boolean: Whether or not the guessed word is the same as the secret word.
+        message: The message that will be printed to the terminal.
+        counter: The number of incorrect answers guessed so far. Increases if the word
+                 is guessed correctly.
     
     Raises: 
         TODO
     """
     if secret_word == guessed_word:
-        return counter, True
+        message = f"'{guessed_word}' \033[3mis\033[0m the word!" # 'is' is in italics
+        return True, message, counter
     else:
         counter += 1
-        return counter, False
+        message = f"'{guessed_word}' is not the word."
+
+        return False, message, counter
     
