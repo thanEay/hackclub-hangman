@@ -59,7 +59,7 @@ while counter < 8:
     if user_input[0] != "!":
         try: 
             indexes, message, counter = ask_for_letter(secret_word, f"{user_input}", counter, 
-                                            already_guessed, uncovered_indicies) # type: ignore
+                                            already_guessed, uncovered_indicies)
             os.system('cls' if os.name == 'nt' else 'clear')
             print(message)
             if -1 not in indexes:
@@ -78,10 +78,14 @@ while counter < 8:
             if correct_word_bool:
                 os.system('cls' if os.name == 'nt' else 'clear')
                 print(message)
+                print(f"Incorrect answers left: {8 - counter}")
+                print(sprites[counter])
                 continue
             else:
                 os.system('cls' if os.name == 'nt' else 'clear')
                 print(message)
+                print(f"Incorrect answers left: {8 - counter}")
+                print(sprites[counter])
                 continue
         except ValueError:
             pass
