@@ -77,9 +77,10 @@ def ask_for_letter(word: str, letter: str, counter: int, already_guessed: list,
         therefore uncovered) letters in the secret word.
     
     Returns:
-        Tuple[int, str]: The position of the letter and a user-facing message. TODO: add second int to this line
-    
-    Raises: 
+        tuple[list[int], str, int]: A tuple containing the list of letter positions,
+            a message describing the result, and the updated incorrect guess counter.
+
+    Raises:
         ValueError: If the input is not a single character.
     """
     indexes = check_letter(word, letter)
