@@ -108,3 +108,23 @@ def ask_for_letter(word: str, letter: str, counter: int, already_guessed: list,
         print("Enter a single letter. No numbers or special characters are allowed.")
         raise ValueError(f"Invalid input: {letter}. Expected string with length of 1.")
     
+def guess_word(secret_word, guessed_word, counter):
+    """Allow the player to guess an entire word. If guessed incorrectly, the couter 
+    goes up one. If guessed correctly, the game is won.
+
+    Args: 
+        secret_word: Secret word being guessed of.
+        guessed_word: The guess by the player.
+
+    Returns: 
+        TODO
+    
+    Raises: 
+        TODO
+    """
+    if secret_word == guessed_word:
+        return counter, True
+    else:
+        counter += 1
+        return counter, False
+    
