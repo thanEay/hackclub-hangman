@@ -51,15 +51,15 @@ print(f"DEBUG: {secret_word}")
 # Main game loop - continue until player wins or reaches 10 wrong guesses
 while counter < 8:
     if is_first_loop:
-        user_input = input("Enter a letter to guess: ")
+        user_input = input("Enter a letter to guess: ").strip().lower() # Ponytail ignore this instance
     else:
-        user_input = input("Enter another letter: ")
-    if user_input.strip().lower() in already_guessed:
+        user_input = input("Enter another letter: ").strip().lower()
+    if user_input in already_guessed:
         print("You already guessed that letter.")
         continue # Goes to next loop
 
     # If the first character of the user input is not '!', do normal things
-    if user_input.strip().lower()[0] != "!":
+    if user_input[0] != "!":
         try: 
             indexes, message, counter = ask_for_letter(secret_word, f"{user_input}", counter, 
                                             already_guessed, uncovered_indicies) # type: ignore
@@ -76,9 +76,11 @@ while counter < 8:
     # If the first character of the user input is '!', guess the entire word
     else: 
         try:
-            correct_word_bool, message, counter = guess_word(secret_word, user_input.strip().lower(), counter)
+            correct_word_bool, message, counter = guess_word(secret_word, 
+                                                             user_input[1:],
+                                                             counter)
             if correct_word_bool:
-                pass
+                print(message)
             else:
                 pass
         except ValueError:

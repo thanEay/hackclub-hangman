@@ -17,7 +17,6 @@ def ask_mode(user_input: str) -> str:
     Raises: 
         ValueError: If the input is not one of the expected values.
     """
-    user_input = user_input.strip().lower()
     # Acceptable user responses for manual vs random word selection.
     appropriate_values = ["manual", "m", "random", "automatic", "auto", "input", "r", "a", "i"]
     if user_input not in appropriate_values:
