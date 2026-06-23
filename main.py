@@ -57,19 +57,33 @@ while counter < 8:
     if user_input.strip().lower() in already_guessed:
         print("You already guessed that letter.")
         continue # Goes to next loop
-    try: 
-        indexes, message, counter = ask_for_letter(secret_word, f"{user_input}", counter, 
-                                        already_guessed, uncovered_indicies) # type: ignore
-        os.system('cls' if os.name == 'nt' else 'clear')
-        print(message)
-        if -1 not in indexes:
-            for index in indexes:
-                printed_word[index] = user_input
-        print("".join(printed_word))
-        print(f"Incorrect answers left: {8 - counter}")
-        print(sprites[counter])
-    except ValueError:
-        print("Enter a single letter. No numbers or special characters are allowed.")
+
+    # If the first character of the user input is not '!', do normal things
+    if user_input.strip().lower()[0] != "!":
+        try: 
+            indexes, message, counter = ask_for_letter(secret_word, f"{user_input}", counter, 
+                                            already_guessed, uncovered_indicies) # type: ignore
+            os.system('cls' if os.name == 'nt' else 'clear')
+            print(message)
+            if -1 not in indexes:
+                for index in indexes:
+                    printed_word[index] = user_input
+            print("".join(printed_word))
+            print(f"Incorrect answers left: {8 - counter}")
+            print(sprites[counter])
+        except ValueError:
+            print("Enter a single letter. No numbers or special characters are allowed.")
+    # If the first character of the user input is '!', guess the entire word
+    else: 
+        try:
+            correct_word_bool, message, counter = guess_word(secret_word, user_input.strip().lower(), counter)
+            if correct_word_bool:
+                pass
+            else:
+                pass
+        except ValueError:
+            pass
+
 # Check if player has found all letters
     if '_' not in printed_word:
         print(f"You guessed the word: {secret_word}. Congratulations! 🎉")
