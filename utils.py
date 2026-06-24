@@ -88,10 +88,11 @@ def ask_for_letter(word: str, letter: str, counter: int, already_guessed: list,
     indexes = check_letter(word, letter)
     try:
         # If the guessed letter exists in the word, append it to guessed letters.
+        already_guessed.append(letter)
         if -1 not in indexes:
-            already_guessed.append(letter)
             if len(indexes) == 1:
-                message = f"{letter} is in the word at index {str(indexes)}."
+                message = f"{letter} is in the word at index {str(indexes)}. "\
+                f"You have already guessed {", ".join(already_guessed)}."
             else:
                 message = f"'{letter}' is in the word at indexes {", ".join(map(str, indexes))}\n"\
                 f"You have already guessed {", ".join(already_guessed)}."
@@ -102,7 +103,6 @@ def ask_for_letter(word: str, letter: str, counter: int, already_guessed: list,
         # indexes.
         message = f"'{letter}' is NOT in the word. You have already guessed "\
             f"{", ".join(already_guessed)}."
-        already_guessed.append(letter)
         counter += 1
         return indexes, message, counter
     except ValueError:

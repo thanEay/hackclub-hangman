@@ -49,11 +49,8 @@ print(f"DEBUG: {secret_word}")
 
 # Main game loop - continue until player wins or reaches 10 wrong guesses
 while counter < 8:
-    if is_first_loop:
-        user_input = input("Enter a letter to guess, or start with '!' to guess an "\
-                           "entire word: ").strip().lower() 
-    else:
-        user_input = input("Enter another letter: ").strip().lower()
+    user_input = input("Enter a letter to guess, or start with '!' to guess an "\
+                        "entire word: ").strip().lower() 
     if user_input in already_guessed_letters:
         print("You already guessed that letter.")
         continue # Goes to next loop
@@ -73,6 +70,7 @@ while counter < 8:
             print(sprites[counter])
         except ValueError:
             print("Enter a single letter. No numbers or special characters are allowed.")
+
     # If the first character of the user input is '!', guess the entire word
     else: 
         if user_input[1:] not in already_guessed_words:
@@ -87,10 +85,10 @@ while counter < 8:
                     exit()
                 else:
                     os.system('cls' if os.name == 'nt' else 'clear')
+                    already_guessed_words.append(user_input[1:])
                     print(f"{message} You have already guessed {", ".join(already_guessed_words)}.")
                     print(f"Incorrect answers left: {8 - counter}")
                     print(sprites[counter])
-                    already_guessed_words.append(user_input[1:])
                     continue
             except ValueError:
                 pass
