@@ -49,8 +49,8 @@ print(f"DEBUG: {secret_word}")
 
 # Main game loop - continue until player wins or reaches 10 wrong guesses
 while counter < 8:
-    user_input = input("Enter a letter to guess, or start with '!' to guess an "\
-                        "entire word: ").strip().lower() 
+    user_input = input("Enter a letter to guess, or start your guess with '!' to guess "\
+                       "an entire word: ").strip().lower() 
     if user_input in already_guessed_letters:
         print("You already guessed that letter.")
         continue # Goes to next loop
