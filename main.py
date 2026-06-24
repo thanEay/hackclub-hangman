@@ -1,5 +1,5 @@
 from utils import *
-from ascii_sprites import sprites
+from ascii_sprites import sprites, freed_sprites
 import os
 
 mode_input = input("Would you like to set your own word or randomly generate one?\n")
@@ -78,9 +78,8 @@ while counter < 8:
             if correct_word_bool:
                 os.system('cls' if os.name == 'nt' else 'clear')
                 print(message)
-                print(f"Incorrect answers left: {8 - counter}")
-                print(sprites[counter])
-                continue
+                print(freed_sprites[counter])
+                printed_word = [secret_word]
             else:
                 os.system('cls' if os.name == 'nt' else 'clear')
                 print(message)
