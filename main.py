@@ -87,6 +87,7 @@ while counter < 8:
                     os.system('cls' if os.name == 'nt' else 'clear')
                     already_guessed_words.append(user_input[1:])
                     print(f"{message} You have already guessed {", ".join(already_guessed_words)}.")
+                    print("".join(printed_word))
                     print(f"Incorrect answers left: {8 - counter}")
                     print(sprites[counter])
                     continue
