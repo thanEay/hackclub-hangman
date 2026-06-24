@@ -2,7 +2,8 @@ from utils import *
 from ascii_sprites import sprites, freed_sprites
 import os
 
-mode_input = input("Would you like to set your own word or randomly generate one?\n")
+mode_input = input("Would you like to set your own word or randomly generate one?\n"\
+                   "Enter 'm' for manual input or 'r' for a random word.\n")
 # Get game mode from user (manual or random word)
 try:
     if ask_mode(mode_input) == "manual":
@@ -48,7 +49,8 @@ print(f"DEBUG: {secret_word}")
 # Main game loop - continue until player wins or reaches 10 wrong guesses
 while counter < 8:
     if is_first_loop:
-        user_input = input("Enter a letter to guess: ").strip().lower() # Ponytail ignore this instance
+        user_input = input("Enter a letter to guess, or start with '!' to guess an "\
+                           "entire word: ").strip().lower() 
     else:
         user_input = input("Enter another letter: ").strip().lower()
     if user_input in already_guessed:
