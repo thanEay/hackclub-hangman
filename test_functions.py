@@ -1,4 +1,5 @@
 from utils import *
+from ascii_sprites import sprites, freed_sprites
 
 # appropriate_values = ['value1', 'value2', 'value3']
 secret_word = choose_random_word()
@@ -13,11 +14,11 @@ uncovered_indicies = []
 
 # index, message = ask_for_letter("stardanceaaaaa", "a", counter, already_guessed, uncovered_indicies)
 
-printed_word = []
-for character in secret_word:
-    printed_word.append("_")
+# printed_word = []
+# for character in secret_word:
+#     printed_word.append("_")
 
-print(f"DEBUG: {secret_word}")
+# print(f"DEBUG: {secret_word}")
 # while counter < 10:
 #     user_input = input("Enter another letter: ")
 #     if user_input.strip().lower() in already_guessed:
@@ -40,5 +41,16 @@ print(f"DEBUG: {secret_word}")
 
 # print(message)
 
-indexes = check_letter(secret_word, 'a')
-print(indexes)
+# indexes = check_letter(secret_word, 'a')
+# print(indexes)
+
+# list = ['stardance', 'hack club', 'foobar', 'python']
+
+# print(", ".join(list))
+
+# print(f"Foobar \033[3mis\033[0m the word!")
+
+for index, sprite in enumerate(freed_sprites):
+    print(str(index))
+    print(sprites[index])
+    print(sprite)
