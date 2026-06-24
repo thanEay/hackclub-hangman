@@ -21,6 +21,7 @@ except ValueError:
 # Initialize game state variables
 counter = 0
 already_guessed_letters = []
+already_guessed_words = []
 uncovered_indicies = []
 is_first_loop = True
 
@@ -74,23 +75,28 @@ while counter < 8:
             print("Enter a single letter. No numbers or special characters are allowed.")
     # If the first character of the user input is '!', guess the entire word
     else: 
-        try:
-            correct_word_bool, message, counter = guess_word(secret_word, user_input[1:],
-                                                             counter)
-            if correct_word_bool:
-                os.system('cls' if os.name == 'nt' else 'clear')
-                print(f"{message} Congratulations! 🎉")
-                if freed_sprites[counter] != "":                    
-                    print(freed_sprites[counter])
-                exit()
-            else:
-                os.system('cls' if os.name == 'nt' else 'clear')
-                print(message)
-                print(f"Incorrect answers left: {8 - counter}")
-                print(sprites[counter])
-                continue
-        except ValueError:
-            pass
+        if user_input[1:] not in already_guessed_words:
+            try:
+                correct_word_bool, message, counter = guess_word(secret_word, user_input[1:],
+                                                                 counter)
+                if correct_word_bool:
+                    os.system('cls' if os.name == 'nt' else 'clear')
+                    print(f"{message} Congratulations! 🎉")
+                    if freed_sprites[counter] != "":                    
+                        print(freed_sprites[counter])
+                    exit()
+                else:
+                    os.system('cls' if os.name == 'nt' else 'clear')
+                    print(f"{message} You have already guessed {", ".join(already_guessed_words)}.")
+                    print(f"Incorrect answers left: {8 - counter}")
+                    print(sprites[counter])
+                    already_guessed_words.append(user_input[1:])
+                    continue
+            except ValueError:
+                pass
+        else:
+            print(f"You have already guessed that word. You have already guessed "\
+                  f"{", ".join(already_guessed_words)}.")
 
 # Check if player has found all letters
     if '_' not in printed_word:
