@@ -77,9 +77,10 @@ while counter < 8:
                                                              counter)
             if correct_word_bool:
                 os.system('cls' if os.name == 'nt' else 'clear')
-                print(message)
-                print(freed_sprites[counter])
-                printed_word = [secret_word]
+                print(f"{message} Congratulations! 🎉")
+                if freed_sprites[counter] != "":                    
+                    print(freed_sprites[counter])
+                exit()
             else:
                 os.system('cls' if os.name == 'nt' else 'clear')
                 print(message)
