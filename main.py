@@ -20,7 +20,7 @@ except ValueError:
 
 # Initialize game state variables
 counter = 0
-already_guessed = []
+already_guessed_letters = []
 uncovered_indicies = []
 is_first_loop = True
 
@@ -53,7 +53,7 @@ while counter < 8:
                            "entire word: ").strip().lower() 
     else:
         user_input = input("Enter another letter: ").strip().lower()
-    if user_input in already_guessed:
+    if user_input in already_guessed_letters:
         print("You already guessed that letter.")
         continue # Goes to next loop
 
@@ -61,7 +61,7 @@ while counter < 8:
     if user_input[0] != "!":
         try: 
             indexes, message, counter = ask_for_letter(secret_word, f"{user_input}", counter, 
-                                            already_guessed, uncovered_indicies)
+                                            already_guessed_letters, uncovered_indicies)
             os.system('cls' if os.name == 'nt' else 'clear')
             print(message)
             if -1 not in indexes:
