@@ -18,14 +18,16 @@ def ask_mode(user_input: str) -> str:
         ValueError: If the input is not one of the expected values.
     """
     # Acceptable user responses for manual vs random word selection.
-    appropriate_values = ["manual", "m", "random", "automatic", "auto", "input", "r", "a", "i"]
+    appropriate_values = ["manual", "m", "man", "random", "rand", "automatic", "auto",
+                           "input", "r", "a", "i"]
     if user_input not in appropriate_values:
-        raise ValueError(f"Invalid input: '{user_input}'. Expected one of appropriate values: {appropriate_values}")
+        raise ValueError(f"Invalid input: '{user_input}'. Expected one of appropriate "\
+                         f"values: {appropriate_values}")
 
     # Map user input to a mode.
-    if user_input in ["manual", "m"]:
+    if user_input in ["manual", "m", "man"]:
         mode = "manual"
-    if user_input in ["random", "automatic", "auto", "input", "r", "a", "i"]:
+    if user_input in ["random", "rand", "automatic", "auto", "input", "r", "a", "i"]:
         mode = "random"
     return mode
 
