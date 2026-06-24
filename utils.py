@@ -127,7 +127,7 @@ def guess_word(secret_word, guessed_word, counter):
     """
     # try: 
     if secret_word == guessed_word:
-        message = f"'{guessed_word}' IS the word!"
+        message = f"'{guessed_word}' \033[3mis\033[0m the word!"
         return True, message, counter
     else:
         counter += 1
