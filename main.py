@@ -74,7 +74,10 @@ while disable_counter or counter < 8:
                 print("Enter a single letter or a word beginning with '!', such as '!hangman'.")
 
         # If the first character of the user input is '!', guess the entire word
-        else: 
+        else:
+            if len(user_input) == 1:
+                print("'!' alone is not an acceptable answer.")
+                continue
             if user_input[1:] not in already_guessed_words:
                 try:
                     old_counter = counter
