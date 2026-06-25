@@ -3,7 +3,7 @@ from ascii_sprites import sprites, freed_sprites
 import os
 
 mode_input = input("Would you like to set your own word or randomly generate one?\n"\
-                   "Enter 'm' for manual input or 'r' for a random word. Start with '!'"\
+                   "Enter 'm' for manual input or 'r' for a random word. Start with '!' "\
                    "to enable infinite guessing. For example, '!m' or '!r'.\n")
 # Get game mode from user (manual or random word)
 try:
@@ -52,59 +52,62 @@ while disable_counter or counter < 8:
         continue # Goes to next loop
 
     # If the first character of the user input is not '!', do normal things
-    if user_input[0] != "!":
-        try:
-            old_counter = counter
-            indexes, message, counter = ask_for_letter(secret_word, f"{user_input}", counter, 
-                                            already_guessed_letters, uncovered_indicies,
-                                            already_guessed_words)
-            if disable_counter:
-                counter = old_counter
-            os.system('cls' if os.name == 'nt' else 'clear')
-            print(message)
-            if -1 not in indexes:
-                for index in indexes:
-                    printed_word[index] = user_input
-            print("".join(printed_word))
-            if not disable_counter:
-                print(f"Incorrect answers left: {8 - counter}")
-                print(sprites[counter])
-        except ValueError:
-            print("Enter a single letter or a word beginning with '!', such as '!hangman'.")
-
-    # If the first character of the user input is '!', guess the entire word
-    else: 
-        if user_input[1:] not in already_guessed_words:
+    try:
+        if user_input[0] != "!":
             try:
                 old_counter = counter
-                correct_word_bool, message, counter = guess_word(secret_word, user_input[1:],
-                                                                 counter)
+                indexes, message, counter = ask_for_letter(secret_word, f"{user_input}", counter, 
+                                                already_guessed_letters, uncovered_indicies,
+                                                already_guessed_words)
                 if disable_counter:
                     counter = old_counter
-                if correct_word_bool:
-                    os.system('cls' if os.name == 'nt' else 'clear')
-                    print(f"{message} Congratulations! 🎉")
-                    if freed_sprites[counter] != "" and not disable_counter:
-                        print(freed_sprites[counter])
-                    exit()
-                else:
-                    os.system('cls' if os.name == 'nt' else 'clear')
-                    already_guessed_words.append(user_input[1:])
-                    if already_guessed_letters == []:
-                        print(f"{message} You have already guessed {', '.join(already_guessed_words)}.")
-                    else:
-                        print(f"{message} You have already guessed {', '.join(already_guessed_letters)}, "\
-                        f"{', '.join(already_guessed_words)}.")
-                    print("".join(printed_word))
-                    if not disable_counter:
-                        print(f"Incorrect answers left: {8 - counter}")
-                        print(sprites[counter])
-                    continue
+                os.system('cls' if os.name == 'nt' else 'clear')
+                print(message)
+                if -1 not in indexes:
+                    for index in indexes:
+                        printed_word[index] = user_input
+                print("".join(printed_word))
+                if not disable_counter:
+                    print(f"Incorrect answers left: {8 - counter}")
+                    print(sprites[counter])
             except ValueError:
-                pass
-        else:
-            print(f"You have already guessed that word. You have already guessed "\
-                  f"{', '.join(already_guessed_letters)}, {', '.join(already_guessed_words)}.")
+                print("Enter a single letter or a word beginning with '!', such as '!hangman'.")
+
+        # If the first character of the user input is '!', guess the entire word
+        else: 
+            if user_input[1:] not in already_guessed_words:
+                try:
+                    old_counter = counter
+                    correct_word_bool, message, counter = guess_word(secret_word, user_input[1:],
+                                                                    counter)
+                    if disable_counter:
+                        counter = old_counter
+                    if correct_word_bool:
+                        os.system('cls' if os.name == 'nt' else 'clear')
+                        print(f"{message} Congratulations! 🎉")
+                        if freed_sprites[counter] != "" and not disable_counter:
+                            print(freed_sprites[counter])
+                        exit()
+                    else:
+                        os.system('cls' if os.name == 'nt' else 'clear')
+                        already_guessed_words.append(user_input[1:])
+                        if already_guessed_letters == []:
+                            print(f"{message} You have already guessed {', '.join(already_guessed_words)}.")
+                        else:
+                            print(f"{message} You have already guessed {', '.join(already_guessed_letters)}, "\
+                            f"{', '.join(already_guessed_words)}.")
+                        print("".join(printed_word))
+                        if not disable_counter:
+                            print(f"Incorrect answers left: {8 - counter}")
+                            print(sprites[counter])
+                        continue
+                except ValueError:
+                    pass
+            else:
+                print(f"You have already guessed that word. You have already guessed "\
+                    f"{', '.join(already_guessed_letters)}, {', '.join(already_guessed_words)}.")
+    except IndexError:
+        print("Enter a valid input.")
 
 # Check if player has found all letters
     if '_' not in printed_word:
