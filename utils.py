@@ -102,22 +102,28 @@ def ask_for_letter(word: str, letter: str, counter: int, already_guessed: list,
             if len(indexes) == 1:
                 if already_guessed_words == []:
                     message = f"{letter} is in the word at index {str(indexes)}. "\
-                    f"You have already guessed {','.join(already_guessed)}."
+                    f"You have already guessed {', '.join(already_guessed)}."
                 else:
                     message = f"{letter} is in the word at index {str(indexes)}. "\
-                    f"You have already guessed {','.join(already_guessed)}, "\
-                    f"{','.join(already_guessed_words)}."
+                    f"You have already guessed {', '.join(already_guessed)}, "\
+                    f"{', '.join(already_guessed_words)}."
             else:
-                message = f"'{letter}' is in the word at indexes {','.join(map(str, indexes))}\n"\
-                f"You have already guessed {','.join(already_guessed)}."
+                message = f"'{letter}' is in the word at indexes {', '.join(map(str, indexes))}\n"\
+                f"You have already guessed {', '.join(already_guessed)}."
             uncovered_indicies.append(indexes)
             return indexes, message, counter
 
         # Handle the case where the guessed letter is not present, when -1 is in 
         # indexes.
-        message = f"{letter} is in the word at index {str(indexes)}. "\
-        f"You have already guessed {','.join(already_guessed)}, "\
-        f"{','.join(already_guessed_words)}."
+        
+        if already_guessed_words == []:
+            message = f"{letter} is in the word at index {str(indexes)}. "\
+            f"You have already guessed {', '.join(already_guessed)}."
+        else:
+            message = f"{letter} is in the word at index {str(indexes)}. "\
+            f"You have already guessed {', '.join(already_guessed)}, "\
+            f"{', '.join(already_guessed_words)}."
+        f"{', '.join(already_guessed_words)}."
         counter += 1
         return indexes, message, counter
     except ValueError:
