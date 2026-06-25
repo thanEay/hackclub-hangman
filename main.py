@@ -41,7 +41,7 @@ print(f"The word has {len(secret_word)} characters.")
 print("".join(printed_word))
 
 # For debug, prints secret word
-print(f"DEBUG: {secret_word}")
+# print(f"DEBUG: {secret_word}")
 
 # Main game loop - continue until player wins or reaches 10 wrong guesses
 while disable_counter or counter < 8:
