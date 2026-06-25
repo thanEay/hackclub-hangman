@@ -5,7 +5,7 @@ from random_words import hangman_words
 # These helpers support choosing the game mode, checking letters, and selecting words.
 # In other words, this code does most of the heavy lifting for the hangman game.
 
-def ask_mode(user_input: str) -> str:
+def ask_mode(user_input_og: str):
     """Return a variable to determine manual or random word choice. 
     
     Args: 
@@ -17,19 +17,26 @@ def ask_mode(user_input: str) -> str:
     Raises: 
         ValueError: If the input is not one of the expected values.
     """
+    # Logic to turn off counter
+    if not user_input_og.startswith("!"):
+        user_input = user_input_og
+        disable_counter = False
+    else:
+        user_input = user_input_og[1:]
+        disable_counter = True
+
     # Acceptable user responses for manual vs random word selection.
     appropriate_values = ["manual", "m", "man", "random", "rand", "automatic", "auto",
                            "input", "r", "a", "i"]
     if user_input not in appropriate_values:
         raise ValueError(f"Invalid input: '{user_input}'. Expected one of appropriate "\
                          f"values: {appropriate_values}")
-
     # Map user input to a mode.
     if user_input in ["manual", "m", "man"]:
         mode = "manual"
     if user_input in ["random", "rand", "automatic", "auto", "input", "r", "a", "i"]:
         mode = "random"
-    return mode
+    return mode, disable_counter
 
 def check_letter(word: str, letter: str) -> list:
     """

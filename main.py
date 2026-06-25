@@ -3,19 +3,20 @@ from ascii_sprites import sprites, freed_sprites
 import os
 
 mode_input = input("Would you like to set your own word or randomly generate one?\n"\
-                   "Enter 'm' for manual input or 'r' for a random word.\n")
+                   "Enter 'm' for manual input or 'r' for a random word. Start with '!'"\
+                   "to enable infinite guessing. For example, '!m' or '!r'.\n")
 # Get game mode from user (manual or random word)
 try:
-    if ask_mode(mode_input) == "manual":
+    if ask_mode(mode_input)[0] == "manual":
         mode = "manual"
-    elif ask_mode(mode_input) == "random":
+    elif ask_mode(mode_input)[0] == "random":
         mode = "random"
-    else: 
-        print("Please enter an appropriate mode: 'manual' or 'random'.")
-        exit()
+    disable_counter = ask_mode(mode_input)[1]
+
 except ValueError:
     print(f"'{mode_input}' is not an appropriate mode. Try 'm' for manual word input "\
-        "or 'r' for random word input.")
+          f"or 'r' for random word input. Start with '!' to enable infinite guessing. "\
+          f"For example, '!m' or '!r'.")
     exit()
 
 # Initialize game state variables
@@ -81,7 +82,7 @@ while counter < 8:
                 if correct_word_bool:
                     os.system('cls' if os.name == 'nt' else 'clear')
                     print(f"{message} Congratulations! 🎉")
-                    if freed_sprites[counter] != "":                    
+                    if freed_sprites[counter] != "":
                         print(freed_sprites[counter])
                     exit()
                 else:
