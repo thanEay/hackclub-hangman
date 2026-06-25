@@ -89,10 +89,10 @@ while counter < 8:
                     os.system('cls' if os.name == 'nt' else 'clear')
                     already_guessed_words.append(user_input[1:])
                     if already_guessed_letters == []:
-                        print(f"{message} You have already guessed {", ".join(already_guessed_words)}.")
+                        print(f"{message} You have already guessed {','.join(already_guessed_words)}.")
                     else:
-                        print(f"{message} You have already guessed {", ".join(already_guessed_letters)}, "\
-                        f"{", ".join(already_guessed_words)}.")
+                        print(f"{message} You have already guessed {','.join(already_guessed_letters)}, "\
+                        f"{','.join(already_guessed_words)}.")
                     print("".join(printed_word))
                     print(f"Incorrect answers left: {8 - counter}")
                     print(sprites[counter])
@@ -101,7 +101,7 @@ while counter < 8:
                 pass
         else:
             print(f"You have already guessed that word. You have already guessed "\
-                  f"{", ".join(already_guessed_letters)}, {", ".join(already_guessed_words)}.")
+                  f"{','.join(already_guessed_letters)}, {','.join(already_guessed_words)}.")
 
 # Check if player has found all letters
     if '_' not in printed_word:
