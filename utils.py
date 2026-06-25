@@ -66,7 +66,7 @@ def choose_random_word() -> str:
 
 # Check a guessed letter and prepare the response message for the game.
 def ask_for_letter(word: str, letter: str, counter: int, already_guessed: list,
-                   uncovered_indicies: list):
+                   uncovered_indicies: list, already_guessed_words):
     """Letter checking and incorrect answer counter logic. 
     
     Args:
@@ -77,6 +77,8 @@ def ask_for_letter(word: str, letter: str, counter: int, already_guessed: list,
         player from increasing the counter on a letter that was already guessed. 
         uncovered_indicies: A list of indicies that map to correctly guessed (and
         therefore uncovered) letters in the secret word.
+        already_guessed_words: A list of words that were already guessed. Printed in the
+        message.
     
     Returns:
         tuple[list[int], str, int]: A tuple containing the list of letter positions,
@@ -91,8 +93,13 @@ def ask_for_letter(word: str, letter: str, counter: int, already_guessed: list,
         already_guessed.append(letter)
         if -1 not in indexes:
             if len(indexes) == 1:
-                message = f"{letter} is in the word at index {str(indexes)}. "\
-                f"You have already guessed {", ".join(already_guessed)}."
+                if already_guessed_words == []:
+                    message = f"{letter} is in the word at index {str(indexes)}. "\
+                    f"You have already guessed {", ".join(already_guessed)}."
+                else:
+                    message = f"{letter} is in the word at index {str(indexes)}. "\
+                    f"You have already guessed {", ".join(already_guessed)}, "\
+                    f"{", ".join(already_guessed_words)}."
             else:
                 message = f"'{letter}' is in the word at indexes {", ".join(map(str, indexes))}\n"\
                 f"You have already guessed {", ".join(already_guessed)}."
@@ -101,8 +108,9 @@ def ask_for_letter(word: str, letter: str, counter: int, already_guessed: list,
 
         # Handle the case where the guessed letter is not present, when -1 is in 
         # indexes.
-        message = f"'{letter}' is NOT in the word. You have already guessed "\
-            f"{", ".join(already_guessed)}."
+        message = f"{letter} is in the word at index {str(indexes)}. "\
+        f"You have already guessed {", ".join(already_guessed)}, "\
+        f"{", ".join(already_guessed_words)}."
         counter += 1
         return indexes, message, counter
     except ValueError:
