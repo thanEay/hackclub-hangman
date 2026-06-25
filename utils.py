@@ -117,10 +117,10 @@ def ask_for_letter(word: str, letter: str, counter: int, already_guessed: list,
         # indexes.
         
         if already_guessed_words == []:
-            message = f"{letter} is in the word at index {str(indexes)}. "\
+            message = f"{letter} is NOT in the word. "\
             f"You have already guessed {', '.join(already_guessed)}."
         else:
-            message = f"{letter} is in the word at index {str(indexes)}. "\
+            message = f"{letter} is NOT in the word. "\
             f"You have already guessed {', '.join(already_guessed)}, "\
             f"{', '.join(already_guessed_words)}."
         f"{', '.join(already_guessed_words)}."
@@ -144,9 +144,6 @@ def guess_word(secret_word, guessed_word, counter):
         message: The message that will be printed to the terminal.
         counter: The number of incorrect answers guessed so far. Increases if the word
                  is guessed correctly.
-    
-    Raises: 
-        TODO
     """
     # try: 
     if secret_word == guessed_word:
@@ -156,6 +153,3 @@ def guess_word(secret_word, guessed_word, counter):
         counter += 1
         message = f"'{guessed_word}' is NOT the word."
         return False, message, counter
-    # except ValueError:
-    #     # raise ValueError(TODO)
-    #     pass
