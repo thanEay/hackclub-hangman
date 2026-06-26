@@ -26,15 +26,14 @@ def ask_mode(user_input_og: str):
         disable_counter = True
 
     # Acceptable user responses for manual vs random word selection.
-    appropriate_values = ["manual", "m", "man", "random", "rand", "automatic", "auto",
-                           "input", "r", "a", "i"]
+    appropriate_values = ["manual", "m", "man", "random", "rand", "r"]
     if user_input not in appropriate_values:
         raise ValueError(f"Invalid input: '{user_input}'. Expected one of appropriate "\
                          f"values: {appropriate_values}")
     # Map user input to a mode.
     if user_input in ["manual", "m", "man"]:
         mode = "manual"
-    if user_input in ["random", "rand", "automatic", "auto", "input", "r", "a", "i"]:
+    if user_input in ["random", "rand", "r"]:
         mode = "random"
     return mode, disable_counter
 
