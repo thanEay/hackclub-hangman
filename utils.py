@@ -164,5 +164,5 @@ def create_printed_locations(indexes):
         locations = []
         for index in indexes:
             locations.append(index + 1)
-        printed_locations = ', '.join([str(index) for index in indexes])
+        printed_locations = ', '.join([str(index) for index in locations])
     return printed_locations
