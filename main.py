@@ -114,6 +114,7 @@ while disable_counter or counter < 8:
 
 # Check if player has found all letters
     if '_' not in printed_word:
+        os.system('cls' if os.name == 'nt' else 'clear')
         print(f"You guessed the word: {secret_word}. Congratulations! 🎉")
         exit()
 

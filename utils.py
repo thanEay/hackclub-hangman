@@ -101,14 +101,14 @@ def ask_for_letter(word: str, letter: str, counter: int, already_guessed: list,
         if -1 not in indexes:
             if len(indexes) == 1:
                 if already_guessed_words == []:
-                    message = f"{letter} is in the word at index {str(indexes)}. "\
+                    message = f"{letter} is in the word at location {create_printed_locations(indexes)}. "\
                     f"You have already guessed {', '.join(already_guessed)}."
                 else:
-                    message = f"{letter} is in the word at index {str(indexes)}. "\
+                    message = f"{letter} is in the word at location {create_printed_locations(indexes)}. "\
                     f"You have already guessed {', '.join(already_guessed)}, "\
                     f"{', '.join(already_guessed_words)}."
             else:
-                message = f"'{letter}' is in the word at indexes {', '.join(map(str, indexes))}\n"\
+                message = f"'{letter}' is in the word at locations {create_printed_locations(indexes)}\n"\
                 f"You have already guessed {', '.join(already_guessed)}."
             uncovered_indicies.append(indexes)
             return indexes, message, counter
@@ -153,3 +153,16 @@ def guess_word(secret_word, guessed_word, counter):
         counter += 1
         message = f"'{guessed_word}' is NOT the word."
         return False, message, counter
+
+def create_printed_locations(indexes):
+    """Takes one or more indexes of letters in the word and returns them as locations 
+    that start at one instead of zero.
+    """
+    if len(indexes) == 1:
+        printed_locations = str(indexes[0] + 1)
+    else:
+        locations = []
+        for index in indexes:
+            locations.append(index + 1)
+        printed_locations = ', '.join([str(index) for index in indexes])
+    return printed_locations
