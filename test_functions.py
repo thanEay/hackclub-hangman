@@ -1,3 +1,8 @@
+"""
+This is the place where I tested out functions and code snippets during the making of this project.
+This has no use in the final deployed version, but it is here to look at and (maybe) learn from.
+"""
+
 from utils import *
 from ascii_sprites import sprites, freed_sprites
 
@@ -50,7 +55,7 @@ uncovered_indicies = []
 
 # print(f"Foobar \033[3mis\033[0m the word!")
 
-for index, sprite in enumerate(freed_sprites):
-    print(str(index))
-    print(sprites[index])
-    print(sprite)
+# for index, sprite in enumerate(freed_sprites):
+#     print(str(index))
+#     print(sprites[index])
+#     print(sprite)

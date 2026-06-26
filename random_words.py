@@ -1,8 +1,21 @@
 hangman_words = [
-    "cat", "dog", "bat", "sun", "hat",
-    "book", "lamp", "desk", "frog", "kite", "bird",
-    "python", "hangman", "laptop", "planet", "guitar",
-    "xylophone", "cryptic", "mystery", "jigsaw", "buzzard",
-    "hack club", "outpost", "stardance", "foobar"
+    "apple", "anchor", "astronaut", "banana", "basket", "beacon", "bicycle",
+    "blanket", "book", "bridge", "bird", "butterfly", "buzzard", "camera",
+    "cactus", "candle", "castle", "cat", "cereal", "chocolate", "cloud",
+    "computer", "cookie", "crystal", "cryptic", "desk", "diamond",
+    "dinosaur", "dog", "dragon", "eagle", "earth", "elephant", "engine",
+    "feather", "firework", "flower", "foobar", "forest", "frog", "galaxy",
+    "garden", "guitar", "hammer", "hangman", "hat", "helmet", "horizon",
+    "iceberg", "island", "jacket", "jigsaw", "jungle", "kangaroo",
+    "keyboard", "kite", "kitten", "ladder", "lamp", "lantern", "laptop",
+    "library", "lightning", "lighthouse", "magnet", "mountain", "mystery",
+    "notebook", "ocean", "octopus", "orange", "pancake", "parachute",
+    "penguin", "piano", "planet", "puzzle", "python", "quartz", "quilt",
+    "rainbow", "rocket", "sandwich", "satellite", "scissors", "snowflake",
+    "spaceship", "spaghetti", "squirrel", "strawberry", "submarine",
+    "sun", "sunflower", "telescope", "thunder", "tornado", "treasure",
+    "triangle", "turtle", "umbrella", "unicorn", "volcano", "wallet",
+    "waterfall", "whisper", "windmill", "wizard", "xylophone", "yacht",
+    "zebra", "zeppelin",
+    "hack club", "outpost", "stardance", "github", "cyber"
 ]
-    
