@@ -116,6 +116,7 @@ while disable_counter or counter < 8:
     if '_' not in printed_word:
         os.system('cls' if os.name == 'nt' else 'clear')
         print(f"You guessed the word: {secret_word}. Congratulations! 🎉")
+        print(freed_sprites[counter])
         exit()
 
 print(f"Game Over! The word was '{secret_word}'")
